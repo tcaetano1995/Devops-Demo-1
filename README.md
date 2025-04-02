@@ -90,7 +90,7 @@ trufflehog .
 ```
 
 ## Contributing
-
+ 
 1. Create a new branch for your feature
 2. Create PR
 3. If Fails show up, refactor your code and try again
