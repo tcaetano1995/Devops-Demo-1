@@ -1,0 +1,9 @@
+fastapi==0.109.2
+uvicorn==0.27.1
+requests==2.31.0
+python-dotenv==1.0.1
+pytest==8.0.0
+pytest-emoji==0.2.0
+flake8==7.0.0
+bandit==1.7.7
+detect-secrets==1.4.0

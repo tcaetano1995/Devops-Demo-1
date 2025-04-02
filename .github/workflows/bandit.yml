@@ -1,0 +1,27 @@
+name: Bandit Security Check
+
+on:
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  security:
+    runs-on: demo-devops
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_bandit
+        python3 -m venv venv_bandit
+
+    - name: Install dependencies
+      run: |
+        source venv_bandit/bin/activate
+        pip3 install bandit
+        
+    - name: Run bandit
+      run: |
+        source venv_bandit/bin/activate
+        bandit -r API/ -ll 

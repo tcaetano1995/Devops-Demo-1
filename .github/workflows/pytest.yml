@@ -1,0 +1,27 @@
+name: Python Tests
+
+on:
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  test:
+    runs-on: demo-devops
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_pytest
+        python3 -m venv venv_pytest
+        
+    - name: Install dependencies
+      run: |
+        source venv_pytest/bin/activate
+        pip3 install -r requirements.txt
+        
+    - name: Run pytest
+      run: |
+        source venv_pytest/bin/activate
+        pytest Tests/test_crypto.py -v 
