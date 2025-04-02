@@ -1,8 +1,6 @@
 name: Flake8
 
 on:
-  push:
-    branches: [ main, dev ]
   pull_request:
     branches: [ main, dev ]
 
@@ -13,16 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.8'
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_flake8
+        python3 -m venv venv_flake8
         
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8
+        source venv_flake8/bin/activate
+        pip3 install flake8
         
     - name: Run flake8
       run: |
+        source venv_flake8/bin/activate
         flake8 API 

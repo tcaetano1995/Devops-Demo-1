@@ -73,7 +73,7 @@ To scan for secrets and API keys in the code:
 
 1. Scan for secrets:
 ```bash
-detect-secrets scan --fail-on-any
+trufflehog .
 ```
 
 
