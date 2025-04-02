@@ -15,10 +15,10 @@ jobs:
       run: |
         rm -rf venv_bandit
         python3 -m venv venv_bandit
-        source venv_bandit/bin/activate
-        
+
     - name: Install dependencies
       run: |
+        source venv_bandit/bin/activate
         pip3 install bandit
         
     - name: Run bandit

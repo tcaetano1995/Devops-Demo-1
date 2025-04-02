@@ -15,10 +15,10 @@ jobs:
       run: |
         rm -rf venv_flake8
         python3 -m venv venv_flake8
-        source venv_flake8/bin/activate
         
     - name: Install dependencies
       run: |
+        source venv_flake8/bin/activate
         pip3 install flake8
         
     - name: Run flake8

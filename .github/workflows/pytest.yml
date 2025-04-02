@@ -15,10 +15,10 @@ jobs:
       run: |
         rm -rf venv_pytest
         python3 -m venv venv_pytest
-        source venv_pytest/bin/activate
         
     - name: Install dependencies
       run: |
+        source venv_pytest/bin/activate
         pip3 install -r requirements.txt
         
     - name: Run pytest
