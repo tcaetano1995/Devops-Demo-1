@@ -81,7 +81,7 @@ trufflehog .
 
 ```
 .
-├── Api/
+├── API/
 │   └── main.py          # Main API implementation
 ├── tests/
 │   └── test_main.py     # Test suite
@@ -90,9 +90,11 @@ trufflehog .
 ```
 
 ## Contributing
- 
-1. Create a new branch for your feature
+
+1. Create a new branch for your feature and make any change.
 2. Create PR
-3. If Fails show up, refactor your code and try again
+3. If checks fail, refactor your code and try again!
+![Checks](./images/1.png)
+
 
 
