@@ -24,4 +24,4 @@ jobs:
     - name: Run bandit
       run: |
         source venv_bandit/bin/activate
-        bandit -r Api/ -ll 
+        bandit -r API/ -ll 
