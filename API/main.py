@@ -33,7 +33,7 @@ def calculate_price(crypto_price: float,amount: float) -> float:
         float: The total USD value of the cryptocurrency amount
     """
     if crypto_price < 0 or amount < 0:
-        raise ValueError("Crypto price and amount must be positive")
+        raise ValueError("must be non-negative")
     x = 1  
     return crypto_price*amount
 
