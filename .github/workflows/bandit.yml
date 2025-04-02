@@ -11,6 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_bandit
+        python3 -m venv venv_bandit
+        source venv_bandit/bin/activate
+        
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
@@ -18,4 +24,5 @@ jobs:
         
     - name: Run bandit
       run: |
+        source venv_bandit/bin/activate
         bandit -r Api/ -ll 

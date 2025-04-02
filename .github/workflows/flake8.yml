@@ -11,6 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_flake8
+        python3 -m venv venv_flake8
+        source venv_flake8/bin/activate
+        
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
@@ -18,4 +24,5 @@ jobs:
         
     - name: Run flake8
       run: |
+        source venv_flake8/bin/activate
         flake8 API 

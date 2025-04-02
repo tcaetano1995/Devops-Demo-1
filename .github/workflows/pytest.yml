@@ -11,6 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Set up virtual environment
+      run: |
+        rm -rf venv_pytest
+        python3 -m venv venv_pytest
+        source venv_pytest/bin/activate
+        
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
@@ -18,4 +24,5 @@ jobs:
         
     - name: Run pytest
       run: |
+        source venv_pytest/bin/activate
         pytest Tests/test_crypto.py -v 
