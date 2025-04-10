@@ -13,7 +13,7 @@ class PriceRequest(BaseModel):
     crypto_symbol: str
     amount: float
     
-    
+     
     
 
 class PriceResponse(BaseModel):    # Too many blank lines above (E303)
