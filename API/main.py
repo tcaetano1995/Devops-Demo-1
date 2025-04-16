@@ -20,7 +20,7 @@ class PriceResponse(BaseModel):
 
 def calculate_price(crypto_price: float, amount: float) -> float:
 
-    return crypto_price * amount * 2
+    return crypto_price * amount
 
 @app.post("/calculate-price", response_model=PriceResponse)
 async def calculate_crypto_price(request: PriceRequest):
