@@ -16,7 +16,7 @@ class PriceRequest(BaseModel):
     
     
 
-class PriceResponse(BaseModel):    # Too many blank lines above (E303)
+class PriceResponse(BaseModel):
     crypto_symbol: str
     amount: float
     usd_price: float
