@@ -26,6 +26,18 @@ source venv/bin/activate  # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+4. Set up the CoinLayer API key as an environment variable:
+```bash
+# Linux/macOS
+export COINLAYER_API_KEY="your_api_key_here"
+
+# Windows Command Prompt
+set COINLAYER_API_KEY=your_api_key_here
+
+# Windows PowerShell
+$env:COINLAYER_API_KEY="your_api_key_here"
+```
+
 ## Running the API
 
 To start the API server:
