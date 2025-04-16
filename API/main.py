@@ -12,17 +12,14 @@ COINLAYER_BASE_URL = "http://api.coinlayer.com/api"
 class PriceRequest(BaseModel):
     crypto_symbol: str
     amount: float
-    
-    
-    
 
-class PriceResponse(BaseModel):    # Too many blank lines above (E303)
+class PriceResponse(BaseModel):
     crypto_symbol: str
     amount: float
     usd_price: float
     total_usd: float
 
-def calculate_price(crypto_price: float,amount: float) -> float:   
+def calculate_price(crypto_price: float, amount: float) -> float:   
     """Calculate the total USD value of a cryptocurrency amount.
     
     Args:
@@ -31,9 +28,14 @@ def calculate_price(crypto_price: float,amount: float) -> float:
         
     Returns:
         float: The total USD value of the cryptocurrency amount
+        
+    Raises:
+        ValueError: If crypto_price or amount is negative
     """
-    x = 1  
-    return crypto_price*amount*2 
+    if crypto_price < 0 or amount < 0:
+        raise ValueError("Crypto price and amount must be non-negative")
+    
+    return crypto_price * amount 
 
 @app.post("/calculate-price", response_model=PriceResponse)  
 async def calculate_crypto_price(request:PriceRequest):
