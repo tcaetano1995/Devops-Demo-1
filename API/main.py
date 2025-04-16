@@ -38,7 +38,7 @@ def calculate_price(crypto_price: float,amount: float) -> float:
 @app.post("/calculate-price", response_model=PriceResponse)  
 async def calculate_crypto_price(request:PriceRequest):
     try:
-        response=requests.get(f"{COINLAYER_BASE_URL}/live",params={"access_key":COINLAYER_API_KEY,"symbols":request.crypto_symbol.upper()})
+        response=requests.get(f"{COINLAYER_BASE_URL}/live",params={"access_key":COINLAYER_API_KEY,"symbols":request.crypto_symbol.upper()}, timeout=10)
         
         
 
@@ -58,4 +58,4 @@ async def calculate_crypto_price(request:PriceRequest):
 
 if __name__=="__main__":
     import uvicorn
-    uvicorn.run(app,host="0.0.0.0",port=8000)
+    uvicorn.run(app,host="127.0.0.1",port=8000)
