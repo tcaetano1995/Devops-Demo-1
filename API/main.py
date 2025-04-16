@@ -32,8 +32,7 @@ def calculate_price(crypto_price: float,amount: float) -> float:
     Returns:
         float: The total USD value of the cryptocurrency amount
     """
-    x = 1  
-    return crypto_price*amount*2 * 5
+    return crypto_price * amount
 
 @app.post("/calculate-price", response_model=PriceResponse)  
 async def calculate_crypto_price(request:PriceRequest):
