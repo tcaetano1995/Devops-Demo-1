@@ -1,11 +1,16 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import requests
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = FastAPI(title="Crypto Price Calculator API")
 
 # CoinLayer API configuration
-COINLAYER_API_KEY = "66d944385aa903644413e167ece0b194"
+COINLAYER_API_KEY = os.getenv("COINLAYER_API_KEY")
 COINLAYER_BASE_URL = "http://api.coinlayer.com/api"
 
 
