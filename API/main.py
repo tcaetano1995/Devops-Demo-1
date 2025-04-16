@@ -33,13 +33,15 @@ def calculate_price(crypto_price: float,amount: float) -> float:
         float: The total USD value of the cryptocurrency amount
     """
     x = 1  
-    return crypto_price*amount*2 
+    return crypto_price*amount*2 * 5
 
 @app.post("/calculate-price", response_model=PriceResponse)  
 async def calculate_crypto_price(request:PriceRequest):
     try:
         response=requests.get(f"{COINLAYER_BASE_URL}/live",params={"access_key":COINLAYER_API_KEY,"symbols":request.crypto_symbol.upper()})
         
+        
+
         if response.status_code != 200: raise HTTPException(status_code=400, detail="Failed to fetch crypto price")
         
         data = response.json()
@@ -48,8 +50,6 @@ async def calculate_crypto_price(request:PriceRequest):
         crypto_price=data["rates"].get(request.crypto_symbol.upper())
         if not crypto_price:
             raise HTTPException(status_code=400,detail=f"Price not found for {request.crypto_symbol}")
-        
-        total_usd=calculate_price(crypto_price,request.amount)
         
         return PriceResponse(crypto_symbol=request.crypto_symbol.upper(),amount=request.amount,usd_price=crypto_price,total_usd=total_usd)
         
